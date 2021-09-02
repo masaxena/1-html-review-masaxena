@@ -1,0 +1,73 @@
+#firsth1{
+    text-align:center;
+    color: black;
+    text-decoration: underline;
+}
+
+.furru{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+h3{
+    text-align: center;
+    color:black;
+}
+
+#firstbg{
+
+    background-color: teal;
+    color:black;
+}
+
+h2{
+    text-align: center;
+    color: teal;
+}
+
+label,button {
+        display: inline-block;
+        width: 200px;
+        text-align: right;
+        font-weight: bold;
+      }
+  
+
+h1{
+    color:teal;
+    text-align: center;
+}
+
+#thirdbg{
+    background-color: #18c7ad;
+}
+
+footer{
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    border-top: 2px solid grey;
+    background-color: #09dde0;
+  }
+
+  .btn{
+     margin-left: 525px;
+  }
+
+  form{
+      border: 1px solid black;
+      padding: 20px;
+  }
+
+  input{
+      width: 500px;
+  }
+
+  label{
+      margin-left: 170px;
+  }
+ 
+
