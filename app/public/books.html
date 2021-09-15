@@ -38,7 +38,7 @@
         </nav>
 
         <main>
-            <table class="table table-success table-striped">
+            <table id="taskTable" class="table table-success table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Sr no.</th>
@@ -153,7 +153,11 @@
         <footer>
           <p class="footer_text"> Furry McFlurry | Phone: 812-855-8100 | Address: 41275 E 10th St, Bloomington, IN 47405</p>
         </footer>
-        
+       <script src="js/tablesort.min.js"></script>
+       <!-- tablesort http://tristen.ca/tablesort/demo/ -->
+        <script>
+          new Tablesort(document.getElementById('taskTable'));
+        </script>
     </body>
 
 </html>
