@@ -70,6 +70,12 @@ footer{
       margin-left: 170px;
   }
  
+  #center{
+        margin-left: 40%;
+        background-color: #18c7ad;
+        text-align: center;
+
+}
 
 th[role=columnheader]:not(.no-sort) {
 	cursor: pointer;
@@ -104,3 +110,4 @@ th[role=columnheader]:not(.no-sort):hover:after {
 	visibility: visible;
 	opacity: 1;
 }
+
