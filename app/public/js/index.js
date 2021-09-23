@@ -1,48 +1,51 @@
-const Offer= {
+const Offer = {
     data() {
-    return{
-    "person":{},
-    "info":[
-     {
-    "name": "Manvi",
-    "country":"USA",
-    "birthday":"25 March",
-    "age":"36",
-    "email":"manvi@yahoo.com",
-    "phone":"5647383947",
-    "image": 'img/k3g.jpg'
-     
-     },
-     {
-    "name": "Nikhil",
-    "country":"India",
-    "birthday":"3 December",
-    "age":"22",
-    "email":"niks@gmail.com",
-    "phone":"74839274748",
-    "image": 'img/kitten.jpg'
-     
-     }
-     ]
-     }
-     },
-     
-     computed: {
+        return {
+            "person": {},
+            "info": [
+                {
+                    "name": "Manvi",
+                    "country": "USA",
+                    "birthday": "25 March",
+                    "age": "36",
+                    "email": "manvi@yahoo.com",
+                    "phone": "5647383947",
+                    "image": 'img/k3g.jpg'
+
+                },
+                {
+                    "name": "Nikhil",
+                    "country": "India",
+                    "birthday": "3 December",
+                    "age": "22",
+                    "email": "niks@gmail.com",
+                    "phone": "74839274748",
+                    "image": 'img/kitten.jpg'
+
+                }
+            ]
+        }
+    },
+    computed: {
         prettyBirthday() {
             return dayjs(this.person.dob.date).format('D MMM YYYY')
         }
     },
-
+    methods: {
+        fetchUserData() {
+            fetch('https://randomuser.me/api/')
+                .then(response => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson); //for debugging
+                    this.person = responseJson.results[0];
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        }
+    },
     created(){
-    fetch('https://randomuser.me/api/')
-     .then(response => response.json())
-     .then((responseJson) => {
-    console.log(responseJson); //for debugging
-    this.person =responseJson.results[0];
-     })
-     .catch((err) => {
-    console.error(err);
-     })
-     }
+        this.fetchUserData();
     }
-    Vue.createApp(Offer).mount('#offerApp')
+}
+Vue.createApp(Offer).mount('#offerApp')
