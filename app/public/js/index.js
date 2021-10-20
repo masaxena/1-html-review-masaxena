@@ -1,29 +1,11 @@
 const Offer = {
     data() {
         return {
-            "person": {},
-            "info": [
-                {
-                    "name": "Manvi",
-                    "country": "USA",
-                    "birthday": "25 March",
-                    "age": "36",
-                    "email": "manvi@yahoo.com",
-                    "phone": "5647383947",
-                    "image": 'img/k3g.jpg'
-
-                },
-                {
-                    "name": "Nikhil",
-                    "country": "India",
-                    "birthday": "3 December",
-                    "age": "22",
-                    "email": "niks@gmail.com",
-                    "phone": "74839274748",
-                    "image": 'img/kitten.jpg'
-
-                }
-            ]
+            "student": [],
+            "selectedStudent": null,
+            "books": [],
+            "offers": [],
+            offerForm: {}
         }
     },
     computed: {
@@ -32,20 +14,51 @@ const Offer = {
         }
     },
     methods: {
-        fetchUserData() {
-            fetch('https://randomuser.me/api/')
+        selectStudent(s) {
+            if (this.selectedStudent == s) {
+                return;
+            }
+            this.selectedStudent = s;
+            this.offers = [];
+            this.fetchOfferData(s);
+        },
+        fetchBooksData() {
+            fetch('/api/books/')
                 .then(response => response.json())
                 .then((responseJson) => {
-                    console.log(responseJson); //for debugging
-                    this.person = responseJson.results[0];
+                    console.log(responseJson);
+                    this.books = responseJson;
                 })
                 .catch((err) => {
                     console.error(err);
                 })
-        }
+        },
+        postNewBook(evt) {
+            
+            console.log("Posting!", this.offerForm);
+    
+            fetch('api/books/create.php', {
+                method:'POST',
+                body: JSON.stringify(this.offerForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.books = json;
+                
+                // reset the form
+                this.offerForm = {};
+
+                this.fetchBooksData()
+              });
+          }
     },
-    created(){
-        this.fetchUserData();
+    created() {
+            this.fetchBooksData();
     }
 }
-Vue.createApp(Offer).mount('#offerApp')
+Vue.createApp(Offer).mount('#offerApp');

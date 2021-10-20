@@ -7,7 +7,7 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-        <link href="css/style.css" rel="stylesheet" type="text/css" /> 
+        <link href="css/style2.css" rel="stylesheet" type="text/css" /> 
 
         <title>D&S HW1</title>
 
@@ -44,15 +44,20 @@
         <main>
           <div id="offerApp">
             <h1 id="firsth1">Personal Info</h1>
-            <img v-bind:src="person.picture.large" class="rounded mx-auto d-block" sizes="50x50"  alt="kitten">
-
+            <!-- <img v-bind:src="person.picture.large" class="rounded mx-auto d-block" sizes="50x50"  alt="kitten"> -->
+              <div class="student" v-for="s in students" v-on:click="selectedStudent(s)">
+                <span class="userName">{{ s.username }}</span><br>
+                <span class="studentName">{{ s.name }}</span>
+              </div> 
+                
+            
             <h3>Name: {{person.name.first}} </h3>
             <h3>Country: {{person.location.country}} </h3>
             <h3>Birthdate: {{prettyBirthday}} </h3>
             <h3>Age: {{person.dob.age}} </h3>
             <h3>Email: <a href="mailto: furru@gmail.com">{{person.email}}</a> </h3>
 
-            <form v-on:submit.prevent="fetchUserData">
+            <form v-on:submit.prevent="fetchStudentData">
               <button type="submit" id="center">Refresh</button>
             </form> 
             
@@ -67,3 +72,6 @@
     </body>
 
 </html>
+
+
+<!-- Make offer table and no offer  -->
